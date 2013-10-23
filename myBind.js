@@ -1,11 +1,10 @@
 //cat.meow.bind(cat1)
 Function.prototype.myBind = function(myObject) {
-  return apply(myObject);
+  var that = this;
+  return function() {
+    that.apply(myObject, []);
+  }
 };
-
-function Cat(name){
-  this.name = name;
-}
 
 // `times` is the same:
 function times(num, fun) {
